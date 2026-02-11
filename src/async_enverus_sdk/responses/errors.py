@@ -6,7 +6,7 @@ import logging
 
 import httpx
 
-from enverus_developer_api._exceptions import (
+from async_enverus_sdk._exceptions import (
     DAAuthException,
     DADatasetException,
     DAQueryException,

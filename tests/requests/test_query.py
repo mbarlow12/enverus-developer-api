@@ -2,7 +2,7 @@
 
 import pytest
 
-from enverus_developer_api.requests.query import (
+from async_enverus_sdk.requests.query import (
     build_query_params,
     chunks,
     detect_query_chunks,

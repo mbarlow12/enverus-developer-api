@@ -3,15 +3,15 @@ requires = ["uv_build>=0.6.6,<0.7"]
 build-backend = "uv_build"
 
 [project]
-name = "enverus-developer-api"
+name = "async-enverus-sdk"
 version = "5.0.0"
-description = "Enverus Developer API Python Client"
+description = "Async-first fork of the Enverus Developer API Python client"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12"
-keywords = ["enverus", "drillinginfo", "directaccess", "oil", "gas"]
+keywords = ["enverus", "drillinginfo", "directaccess", "oil", "gas", "async"]
 authors = [
-    { name = "Direct Access", email = "directaccess@enverus.com" },
+    { name = "Michael Barlow" },
 ]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -34,7 +34,7 @@ pandas = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/enverus-ea/enverus-developer-api"
+Homepage = "https://github.com/mbarlow12/async-enverus-sdk"
 
 [dependency-groups]
 dev = [

@@ -1,6 +1,6 @@
 """Request building utilities for the Enverus Developer API."""
 
-from enverus_developer_api.requests.filters import (
+from async_enverus_sdk.requests.filters import (
     btw,
     eq,
     ge,
@@ -12,7 +12,7 @@ from enverus_developer_api.requests.filters import (
     nil,
     not_,
 )
-from enverus_developer_api.requests.query import build_query_params
+from async_enverus_sdk.requests.query import build_query_params
 
 __all__ = [
     "btw",

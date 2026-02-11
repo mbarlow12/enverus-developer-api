@@ -13,8 +13,8 @@ from tempfile import mkdtemp
 from typing import Any
 from uuid import uuid4
 
-from enverus_developer_api._types import Record
-from enverus_developer_api.models.metadata import DDLField
+from async_enverus_sdk._types import Record
+from async_enverus_sdk.models.metadata import DDLField
 
 logger = logging.getLogger("directaccess")
 
@@ -142,10 +142,10 @@ def to_dataframe(
     except ImportError:
         raise ImportError(
             "pandas not installed. Install with: "
-            "pip install 'enverus-developer-api[pandas]'"
+            "pip install 'async-enverus-sdk[pandas]'"
         )
 
-    from enverus_developer_api.responses.parsing import parse_ddl
+    from async_enverus_sdk.responses.parsing import parse_ddl
 
     # Parse DDL if provided as text
     if ddl_fields is None and ddl_text is not None:

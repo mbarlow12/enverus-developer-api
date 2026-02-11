@@ -9,7 +9,7 @@ Requires the ENVERUS_SECRET_KEY environment variable.
 
 import os
 
-from enverus_developer_api import (
+from async_enverus_sdk import (
     btw,
     eq,
     ge,

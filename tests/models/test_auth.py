@@ -1,6 +1,6 @@
 """Tests for models/auth.py."""
 
-from enverus_developer_api.models.auth import TokenRequest, TokenResponse
+from async_enverus_sdk.models.auth import TokenRequest, TokenResponse
 
 
 class TestTokenRequest:

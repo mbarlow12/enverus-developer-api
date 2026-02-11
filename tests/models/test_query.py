@@ -3,7 +3,7 @@
 import pytest
 from pydantic import ValidationError
 
-from enverus_developer_api.models.query import QueryParams
+from async_enverus_sdk.models.query import QueryParams
 
 
 class TestQueryParams:

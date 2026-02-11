@@ -8,15 +8,15 @@ from typing import Any, Self
 
 import httpx
 
-from enverus_developer_api._auth import TokenManager
-from enverus_developer_api._retry import AsyncRetryTransport
-from enverus_developer_api._types import Record
-from enverus_developer_api.models.metadata import DDLField, DocsField
-from enverus_developer_api.models.pagination import PaginationLinks
-from enverus_developer_api.requests.query import detect_query_chunks, format_in
-from enverus_developer_api.responses.errors import check_response
-from enverus_developer_api.responses.pagination import extract_links
-from enverus_developer_api.responses.parsing import parse_ddl, parse_docs
+from async_enverus_sdk._auth import TokenManager
+from async_enverus_sdk._retry import AsyncRetryTransport
+from async_enverus_sdk._types import Record
+from async_enverus_sdk.models.metadata import DDLField, DocsField
+from async_enverus_sdk.models.pagination import PaginationLinks
+from async_enverus_sdk.requests.query import detect_query_chunks, format_in
+from async_enverus_sdk.responses.errors import check_response
+from async_enverus_sdk.responses.pagination import extract_links
+from async_enverus_sdk.responses.parsing import parse_ddl, parse_docs
 
 logger = logging.getLogger("directaccess")
 
@@ -56,7 +56,7 @@ class EnverusClient:
         )
         self._client = httpx.AsyncClient(
             transport=transport,
-            headers={"User-Agent": "enverus-developer-api"},
+            headers={"User-Agent": "async-enverus-sdk"},
             timeout=httpx.Timeout(timeout),
         )
 
@@ -169,7 +169,7 @@ class EnverusClient:
                 if isinstance(data, dict) and "links" in data:
                     body_links = data.get("links")
                     if body_links:
-                        from enverus_developer_api.responses.pagination import (
+                        from async_enverus_sdk.responses.pagination import (
                             _parse_body_links,
                         )
 

@@ -13,7 +13,7 @@ import csv
 import os
 import tempfile
 
-from enverus_developer_api import sync, to_csv
+from async_enverus_sdk import sync, to_csv
 
 SECRET_KEY = "..."
 
@@ -34,7 +34,7 @@ fields, column dtypes are inferred from the database schema instead of relying
 on pandas' default inference.
 
 ```python
-from enverus_developer_api import sync, to_dataframe
+from async_enverus_sdk import sync, to_dataframe
 
 SECRET_KEY = "..."
 
@@ -65,10 +65,10 @@ df = to_dataframe(
 !!! note
     The `pandas` optional dependency is required:
     ```bash
-    pip install 'enverus-developer-api[pandas]'
+    pip install 'async-enverus-sdk[pandas]'
     ```
 
 ## Full example
 
-See [`examples/export.py`](https://github.com/enverus-ea/enverus-developer-api/blob/master/examples/export.py)
+See [`examples/export.py`](https://github.com/enverus-ea/async-enverus-sdk/blob/master/examples/export.py)
 for a runnable script.

@@ -1,20 +1,20 @@
 """Enverus Developer API Python Client."""
 
 # Primary client
-from enverus_developer_api._client import EnverusClient
+from async_enverus_sdk._client import EnverusClient
 
 # Sync convenience module
-from enverus_developer_api import _sync as sync
+from async_enverus_sdk import _sync as sync
 
 # Models
-from enverus_developer_api.models.auth import TokenRequest, TokenResponse
-from enverus_developer_api.models.errors import ErrorResponse
-from enverus_developer_api.models.metadata import DDLField, DocsField
-from enverus_developer_api.models.pagination import LinkInfo, PaginationLinks
-from enverus_developer_api.models.query import QueryParams
+from async_enverus_sdk.models.auth import TokenRequest, TokenResponse
+from async_enverus_sdk.models.errors import ErrorResponse
+from async_enverus_sdk.models.metadata import DDLField, DocsField
+from async_enverus_sdk.models.pagination import LinkInfo, PaginationLinks
+from async_enverus_sdk.models.query import QueryParams
 
 # Filter DSL
-from enverus_developer_api.requests.filters import (
+from async_enverus_sdk.requests.filters import (
     btw,
     eq,
     ge,
@@ -28,7 +28,7 @@ from enverus_developer_api.requests.filters import (
 )
 
 # Exceptions
-from enverus_developer_api._exceptions import (
+from async_enverus_sdk._exceptions import (
     DAAuthException,
     DADatasetException,
     DAError,
@@ -36,10 +36,10 @@ from enverus_developer_api._exceptions import (
 )
 
 # Export utilities
-from enverus_developer_api._export import to_csv, to_dataframe
+from async_enverus_sdk._export import to_csv, to_dataframe
 
 # Types
-from enverus_developer_api._types import Record
+from async_enverus_sdk._types import Record
 
 __all__ = [
     # Client

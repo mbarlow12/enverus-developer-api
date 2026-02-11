@@ -2,7 +2,7 @@
 
 import httpx
 
-from enverus_developer_api.responses.parsing import parse_ddl, parse_docs, parse_records
+from async_enverus_sdk.responses.parsing import parse_ddl, parse_docs, parse_records
 
 
 class TestParseRecords:

@@ -6,8 +6,8 @@ import re
 
 import httpx
 
-from enverus_developer_api._types import Record
-from enverus_developer_api.models.metadata import DDLField, DocsField
+from async_enverus_sdk._types import Record
+from async_enverus_sdk.models.metadata import DDLField, DocsField
 
 
 def parse_records(response: httpx.Response) -> list[Record]:

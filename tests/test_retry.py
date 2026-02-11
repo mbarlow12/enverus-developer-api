@@ -7,7 +7,7 @@ from unittest.mock import MagicMock, patch
 import httpx
 import pytest
 
-from enverus_developer_api._retry import AsyncRetryTransport
+from async_enverus_sdk._retry import AsyncRetryTransport
 
 
 @pytest.mark.asyncio
@@ -25,7 +25,7 @@ class TestAsyncRetryTransport:
 
         assert response.status_code == 200
 
-    @patch("enverus_developer_api._retry.asyncio.sleep")
+    @patch("async_enverus_sdk._retry.asyncio.sleep")
     async def test_retries_on_500(self, mock_sleep: MagicMock):
         call_count = 0
 
@@ -46,7 +46,7 @@ class TestAsyncRetryTransport:
         assert response.status_code == 200
         assert call_count == 3
 
-    @patch("enverus_developer_api._retry.asyncio.sleep")
+    @patch("async_enverus_sdk._retry.asyncio.sleep")
     async def test_exhausts_retries(self, mock_sleep: MagicMock):
         async def mock_handle(request: httpx.Request) -> httpx.Response:
             return httpx.Response(503)
@@ -78,7 +78,7 @@ class TestAsyncRetryTransport:
         assert response.status_code == 400
         assert call_count == 1
 
-    @patch("enverus_developer_api._retry.asyncio.sleep")
+    @patch("async_enverus_sdk._retry.asyncio.sleep")
     async def test_backoff_factor(self, mock_sleep: MagicMock):
         call_count = 0
 

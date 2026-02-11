@@ -6,8 +6,8 @@ import httpx
 import pytest
 import respx
 
-from enverus_developer_api import EnverusClient
-from enverus_developer_api._exceptions import (
+from async_enverus_sdk import EnverusClient
+from async_enverus_sdk._exceptions import (
     DADatasetException,
     DAQueryException,
 )
@@ -190,7 +190,7 @@ class TestEnverusClient:
         from shutil import rmtree
         from tempfile import mkdtemp
 
-        from enverus_developer_api import to_csv
+        from async_enverus_sdk import to_csv
 
         mock_api.add_pages("wells", [[{"A": 1, "B": 2}, {"A": 3, "B": 4}]])
         tmpdir = mkdtemp()

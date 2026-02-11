@@ -6,8 +6,8 @@ import httpx
 import pytest
 import respx
 
-from enverus_developer_api._auth import TokenManager
-from enverus_developer_api._exceptions import DAAuthException
+from async_enverus_sdk._auth import TokenManager
+from async_enverus_sdk._exceptions import DAAuthException
 
 V3_BASE = "https://api.enverus.com/v3/direct-access/"
 TOKEN_URL = f"{V3_BASE}tokens"

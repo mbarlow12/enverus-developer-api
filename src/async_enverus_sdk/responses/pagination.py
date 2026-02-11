@@ -6,7 +6,7 @@ import re
 
 import httpx
 
-from enverus_developer_api.models.pagination import LinkInfo, PaginationLinks
+from async_enverus_sdk.models.pagination import LinkInfo, PaginationLinks
 
 
 def extract_links(
