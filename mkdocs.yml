@@ -1,0 +1,17 @@
+site_name: Enverus Developer API
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - Examples:
+      - Quick Start: examples/quickstart.md
+      - Filtering: examples/filtering.md
+      - Async Patterns: examples/concurrent.md
+      - Exporting Data: examples/export.md
+  - API Reference: reference/index.md
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [src]
