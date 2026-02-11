@@ -1,73 +1,102 @@
-"""httpx Auth flow for transparent bearer token management."""
+"""Async-native token lifecycle management."""
 
 from __future__ import annotations
 
+import asyncio
 import logging
-import time
-from collections.abc import Generator
-from typing import TYPE_CHECKING
 
 import httpx
 
-from enverus_developer_api._exceptions import (
-    DAAuthException,
-    DADatasetException,
-    DAQueryException,
-)
-
-if TYPE_CHECKING:
-    from enverus_developer_api._async_client import AsyncBaseClient
-    from enverus_developer_api._client import BaseClient
+from enverus_developer_api._exceptions import DAAuthException
 
 logger = logging.getLogger("directaccess")
 
+THROTTLE_WAIT_SECONDS = 60
 
-class _TokenAuth(httpx.Auth):
-    """Bearer token auth with transparent 401 refresh and 403 throttle handling.
 
-    Works for both sync and async httpx clients via httpx's auth_flow protocol.
-    """
+class TokenManager:
+    """Manages async token lifecycle: acquisition, caching, 401 refresh, 403 throttle."""
 
-    requires_response_body = True
-
-    def __init__(self, client: BaseClient | AsyncBaseClient) -> None:
+    def __init__(
+        self,
+        secret_key: str,
+        token_url: str,
+        client: httpx.AsyncClient,
+    ) -> None:
+        self._secret_key = secret_key
+        self._token_url = token_url
         self._client = client
+        self._token: str | None = None
+        self._lock = asyncio.Lock()
 
-    def auth_flow(
-        self, request: httpx.Request
-    ) -> Generator[httpx.Request, httpx.Response, None]:
-        if self._client.access_token:
-            request.headers["Authorization"] = f"bearer {self._client.access_token}"
-        response = yield request
+    @property
+    def token(self) -> str | None:
+        return self._token
 
-        self._check_error_responses(response)
+    @token.setter
+    def token(self, value: str | None) -> None:
+        self._token = value
 
-        if response.status_code == 401:
-            logger.warning("Access token expired. Acquiring a new one...")
-            self._client.get_access_token()
-            request.headers["Authorization"] = f"bearer {self._client.access_token}"
-            response = yield request
+    async def get_token(self) -> str:
+        """Return cached token or acquire a new one."""
+        if self._token:
+            return self._token
+        return await self.refresh_token()
 
-    @staticmethod
-    def _check_error_responses(response: httpx.Response) -> None:
-        """Check for error status codes and raise appropriate exceptions."""
-        if response.is_success:
-            return
-
-        logger.debug(f"Response status code: {response.status_code}")
-        logger.debug(f"Response text: {response.text}")
-
-        if response.status_code == 400:
-            if "tokens" in str(response.url):
+    async def refresh_token(self) -> str:
+        """Force-acquire a new token from the API."""
+        async with self._lock:
+            if not self._secret_key:
                 raise DAAuthException(
-                    f"Error getting token. Code: {response.status_code} Message: {response.text}"
+                    "SECRET_KEY is required to generate an access token"
                 )
-            raise DAQueryException(response.text)
 
-        if response.status_code == 403 and "tokens" in str(response.url):
-            logger.warning("Throttled token request. Waiting 60 seconds...")
-            time.sleep(60)
-            return
+            logger.debug("Acquiring new access token from %s", self._token_url)
+            response = await self._client.post(
+                self._token_url,
+                json={"secretKey": self._secret_key},
+                headers={"Content-Type": "application/json"},
+            )
 
-        if response.status_code == 404:
-            raise DADatasetException("Invalid dataset name provided")
+            if response.status_code == 400:
+                raise DAAuthException(
+                    f"Error getting token. Code: {response.status_code} "
+                    f"Message: {response.text}"
+                )
+
+            if response.status_code == 403:
+                logger.warning(
+                    "Throttled token request. Waiting %d seconds...",
+                    THROTTLE_WAIT_SECONDS,
+                )
+                await asyncio.sleep(THROTTLE_WAIT_SECONDS)
+                # Retry once after throttle
+                response = await self._client.post(
+                    self._token_url,
+                    json={"secretKey": self._secret_key},
+                    headers={"Content-Type": "application/json"},
+                )
+                if not response.is_success:
+                    raise DAAuthException(
+                        f"Token request failed after throttle wait. "
+                        f"Code: {response.status_code} Message: {response.text}"
+                    )
+
+            if not response.is_success:
+                raise DAAuthException(
+                    f"Token request failed. Code: {response.status_code} "
+                    f"Message: {response.text}"
+                )
+
+            data = response.json()
+            self._token = data["token"]
+            logger.debug("Token acquired successfully")
+            return self._token
+
+    async def handle_throttle(self) -> None:
+        """Wait out a 403 throttle response."""
+        logger.warning(
+            "Throttled token request. Waiting %d seconds...",
+            THROTTLE_WAIT_SECONDS,
+        )
+        await asyncio.sleep(THROTTLE_WAIT_SECONDS)

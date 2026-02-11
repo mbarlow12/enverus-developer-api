@@ -1,33 +1,78 @@
 """Enverus Developer API Python Client."""
 
-from enverus_developer_api._async_client import (
-    AsyncBaseClient,
-    AsyncDeveloperAPIv3,
-    AsyncDirectAccessV2,
+# Primary client
+from enverus_developer_api._client import EnverusClient
+
+# Sync convenience module
+from enverus_developer_api import _sync as sync
+
+# Models
+from enverus_developer_api.models.auth import TokenRequest, TokenResponse
+from enverus_developer_api.models.errors import ErrorResponse
+from enverus_developer_api.models.metadata import DDLField, DocsField
+from enverus_developer_api.models.pagination import LinkInfo, PaginationLinks
+from enverus_developer_api.models.query import QueryParams
+
+# Filter DSL
+from enverus_developer_api.requests.filters import (
+    btw,
+    eq,
+    ge,
+    gt,
+    in_,
+    le,
+    lt,
+    ne,
+    nil,
+    not_,
 )
-from enverus_developer_api._client import (
-    BaseClient,
-    DeveloperAPIv3,
-    DirectAccessV2,
-)
+
+# Exceptions
 from enverus_developer_api._exceptions import (
     DAAuthException,
     DADatasetException,
     DAError,
     DAQueryException,
 )
-from enverus_developer_api._utils import in_
+
+# Export utilities
+from enverus_developer_api._export import to_csv, to_dataframe
+
+# Types
+from enverus_developer_api._types import Record
 
 __all__ = [
-    "AsyncBaseClient",
-    "AsyncDeveloperAPIv3",
-    "AsyncDirectAccessV2",
-    "BaseClient",
+    # Client
+    "EnverusClient",
+    "sync",
+    # Models
+    "DDLField",
+    "DocsField",
+    "ErrorResponse",
+    "LinkInfo",
+    "PaginationLinks",
+    "QueryParams",
+    "TokenRequest",
+    "TokenResponse",
+    # Filters
+    "btw",
+    "eq",
+    "ge",
+    "gt",
+    "in_",
+    "le",
+    "lt",
+    "ne",
+    "nil",
+    "not_",
+    # Exceptions
     "DAAuthException",
     "DADatasetException",
     "DAError",
     "DAQueryException",
-    "DeveloperAPIv3",
-    "DirectAccessV2",
-    "in_",
+    # Export
+    "to_csv",
+    "to_dataframe",
+    # Types
+    "Record",
 ]
