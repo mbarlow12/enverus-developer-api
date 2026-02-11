@@ -7,7 +7,7 @@ from typing import Any, Self
 import httpx
 import respx
 
-from enverus_developer_api._types import Record
+from async_enverus_sdk._types import Record
 
 V3_BASE = "https://api.enverus.com/v3/direct-access/"
 

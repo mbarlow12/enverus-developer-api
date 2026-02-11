@@ -7,7 +7,7 @@ import logging
 
 import httpx
 
-from enverus_developer_api._exceptions import DAAuthException
+from async_enverus_sdk._exceptions import DAAuthException
 
 logger = logging.getLogger("directaccess")
 

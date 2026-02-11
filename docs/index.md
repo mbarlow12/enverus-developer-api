@@ -1,20 +1,21 @@
-# Enverus Developer API
+# async-enverus-sdk
+
+> This is an async-first fork of [`enverus-developer-api`](https://github.com/enverus-ea/enverus-developer-api)
+> with Pydantic models, a filter DSL, and modern Python (3.12+).
 
 A Python client for the [Enverus Developer API](https://app.enverus.com/direct/#/api/explorer/v3/gettingStarted).
 Handles authentication, pagination, retry/backoff, and streaming via async generators.
 
-Requires **Python 3.12+**.
-
 ## Installation
 
 ```bash
-pip install enverus-developer-api
+pip install async-enverus-sdk
 ```
 
 With optional [pandas](https://pandas.pydata.org/) support:
 
 ```bash
-pip install 'enverus-developer-api[pandas]'
+pip install 'async-enverus-sdk[pandas]'
 ```
 
 ## Quick start
@@ -23,7 +24,7 @@ pip install 'enverus-developer-api[pandas]'
 
 ```python
 import asyncio
-from enverus_developer_api import EnverusClient
+from async_enverus_sdk import EnverusClient
 
 async def main():
     async with EnverusClient(secret_key="<your-secret-key>") as client:
@@ -44,7 +45,7 @@ asyncio.run(main())
 The `sync` module provides synchronous wrappers around the async client:
 
 ```python
-from enverus_developer_api import sync
+from async_enverus_sdk import sync
 
 for record in sync.query("<your-secret-key>", "wells", pagesize=5, deleteddate="null"):
     print(record)

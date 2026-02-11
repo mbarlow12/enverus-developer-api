@@ -1,6 +1,6 @@
 """Tests for models/pagination.py."""
 
-from enverus_developer_api.models.pagination import LinkInfo, PaginationLinks
+from async_enverus_sdk.models.pagination import LinkInfo, PaginationLinks
 
 
 class TestPaginationLinks:

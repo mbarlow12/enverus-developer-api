@@ -10,7 +10,7 @@ Use `asyncio.TaskGroup` to run independent requests concurrently:
 
 ```python
 import asyncio
-from enverus_developer_api import EnverusClient
+from async_enverus_sdk import EnverusClient
 
 SECRET_KEY = "..."
 
@@ -38,7 +38,7 @@ DataFrame with proper dtypes:
 
 ```python
 import asyncio
-from enverus_developer_api import EnverusClient, not_, nil, to_dataframe
+from async_enverus_sdk import EnverusClient, not_, nil, to_dataframe
 
 SECRET_KEY = "..."
 
@@ -69,5 +69,5 @@ avoiding the default object-dtype columns you'd get from `pd.DataFrame(records)`
 
 ## Full example
 
-See [`examples/concurrent.py`](https://github.com/enverus-ea/enverus-developer-api/blob/master/examples/concurrent.py)
+See [`examples/concurrent.py`](https://github.com/enverus-ea/async-enverus-sdk/blob/master/examples/concurrent.py)
 for a runnable script combining all of these patterns.

@@ -3,12 +3,12 @@
 import httpx
 import pytest
 
-from enverus_developer_api._exceptions import (
+from async_enverus_sdk._exceptions import (
     DAAuthException,
     DADatasetException,
     DAQueryException,
 )
-from enverus_developer_api.responses.errors import check_response
+from async_enverus_sdk.responses.errors import check_response
 
 
 class TestCheckResponse:

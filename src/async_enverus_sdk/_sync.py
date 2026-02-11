@@ -2,7 +2,7 @@
 
 Usage::
 
-    from enverus_developer_api import sync
+    from async_enverus_sdk import sync
 
     for row in sync.query("my-secret-key", "wells", deleteddate="null", pagesize=10):
         print(row)
@@ -20,9 +20,9 @@ from typing import Any, TypeVar
 
 _T = TypeVar("_T")
 
-from enverus_developer_api._client import EnverusClient
-from enverus_developer_api._types import Record
-from enverus_developer_api.models.metadata import DDLField, DocsField
+from async_enverus_sdk._client import EnverusClient
+from async_enverus_sdk._types import Record
+from async_enverus_sdk.models.metadata import DDLField, DocsField
 
 _SENTINEL = object()
 

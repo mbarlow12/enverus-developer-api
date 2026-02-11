@@ -2,87 +2,87 @@
 
 ## Client
 
-::: enverus_developer_api.EnverusClient
+::: async_enverus_sdk.EnverusClient
     options:
       show_source: false
       members_order: source
 
 ## Sync Module
 
-::: enverus_developer_api._sync
+::: async_enverus_sdk._sync
     options:
       show_source: false
 
 ## Export Helpers
 
-::: enverus_developer_api.to_csv
+::: async_enverus_sdk.to_csv
     options:
       show_source: false
 
-::: enverus_developer_api.to_dataframe
+::: async_enverus_sdk.to_dataframe
     options:
       show_source: false
 
 ## Filter DSL
 
-::: enverus_developer_api.requests.filters
+::: async_enverus_sdk.requests.filters
     options:
       show_source: false
 
 ## Models
 
-::: enverus_developer_api.models.metadata.DDLField
+::: async_enverus_sdk.models.metadata.DDLField
     options:
       show_source: false
 
-::: enverus_developer_api.models.metadata.DocsField
+::: async_enverus_sdk.models.metadata.DocsField
     options:
       show_source: false
 
-::: enverus_developer_api.models.query.QueryParams
+::: async_enverus_sdk.models.query.QueryParams
     options:
       show_source: false
 
-::: enverus_developer_api.models.pagination.LinkInfo
+::: async_enverus_sdk.models.pagination.LinkInfo
     options:
       show_source: false
 
-::: enverus_developer_api.models.pagination.PaginationLinks
+::: async_enverus_sdk.models.pagination.PaginationLinks
     options:
       show_source: false
 
-::: enverus_developer_api.models.auth.TokenRequest
+::: async_enverus_sdk.models.auth.TokenRequest
     options:
       show_source: false
 
-::: enverus_developer_api.models.auth.TokenResponse
+::: async_enverus_sdk.models.auth.TokenResponse
     options:
       show_source: false
 
-::: enverus_developer_api.models.errors.ErrorResponse
+::: async_enverus_sdk.models.errors.ErrorResponse
     options:
       show_source: false
 
 ## Exceptions
 
-::: enverus_developer_api.DAError
+::: async_enverus_sdk.DAError
     options:
       show_source: false
 
-::: enverus_developer_api.DAAuthException
+::: async_enverus_sdk.DAAuthException
     options:
       show_source: false
 
-::: enverus_developer_api.DAQueryException
+::: async_enverus_sdk.DAQueryException
     options:
       show_source: false
 
-::: enverus_developer_api.DADatasetException
+::: async_enverus_sdk.DADatasetException
     options:
       show_source: false
 
 ## Types
 
-::: enverus_developer_api.Record
+::: async_enverus_sdk.Record
     options:
       show_source: false

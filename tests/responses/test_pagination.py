@@ -2,7 +2,7 @@
 
 import httpx
 
-from enverus_developer_api.responses.pagination import _parse_body_links, extract_links
+from async_enverus_sdk.responses.pagination import _parse_body_links, extract_links
 
 
 class TestExtractLinks:

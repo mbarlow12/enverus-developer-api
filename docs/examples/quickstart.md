@@ -11,7 +11,7 @@ The library provides two usage patterns:
 
 ```python
 import asyncio
-from enverus_developer_api import EnverusClient
+from async_enverus_sdk import EnverusClient
 
 SECRET_KEY = "..."
 
@@ -48,7 +48,7 @@ If you don't need async, the `sync` module exposes the same operations as
 top-level functions. Each call creates a short-lived client behind the scenes.
 
 ```python
-from enverus_developer_api import sync
+from async_enverus_sdk import sync
 
 SECRET_KEY = "..."
 
@@ -61,5 +61,5 @@ Available sync functions: `query`, `count`, `ddl`, `docs`.
 
 ## Full example
 
-See [`examples/quickstart.py`](https://github.com/enverus-ea/enverus-developer-api/blob/master/examples/quickstart.py)
+See [`examples/quickstart.py`](https://github.com/enverus-ea/async-enverus-sdk/blob/master/examples/quickstart.py)
 for a runnable script.

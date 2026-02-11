@@ -12,8 +12,8 @@ from tempfile import mkdtemp
 
 import pytest
 
-from enverus_developer_api import EnverusClient, sync, to_csv
-from enverus_developer_api._exceptions import DADatasetException, DAQueryException
+from async_enverus_sdk import EnverusClient, sync, to_csv
+from async_enverus_sdk._exceptions import DADatasetException, DAQueryException
 
 HAS_V3_CREDS = bool(os.environ.get("DIRECTACCESSV3_API_KEY"))
 skip_no_v3 = pytest.mark.skipif(not HAS_V3_CREDS, reason="No v3 API credentials")

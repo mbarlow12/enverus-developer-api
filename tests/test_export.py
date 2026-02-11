@@ -7,14 +7,14 @@ import os
 from shutil import rmtree
 from tempfile import mkdtemp
 
-from enverus_developer_api._export import (
+from async_enverus_sdk._export import (
     _ddl_to_dtypes,
     _detect_date_columns,
     _detect_index,
     to_csv,
     to_dataframe,
 )
-from enverus_developer_api.models.metadata import DDLField
+from async_enverus_sdk.models.metadata import DDLField
 
 
 class TestToCsv:

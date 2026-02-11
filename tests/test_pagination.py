@@ -6,7 +6,7 @@ import httpx
 import pytest
 import respx
 
-from enverus_developer_api import EnverusClient
+from async_enverus_sdk import EnverusClient
 
 V3_BASE = "https://api.enverus.com/v3/direct-access/"
 

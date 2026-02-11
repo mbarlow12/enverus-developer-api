@@ -1,6 +1,6 @@
 """Tests for requests/filters.py — filter DSL."""
 
-from enverus_developer_api.requests.filters import (
+from async_enverus_sdk.requests.filters import (
     btw,
     eq,
     ge,

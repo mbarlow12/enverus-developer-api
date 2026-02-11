@@ -10,7 +10,7 @@ Requires the ENVERUS_SECRET_KEY environment variable and the
 import asyncio
 import os
 
-from enverus_developer_api import EnverusClient, not_, nil, to_dataframe
+from async_enverus_sdk import EnverusClient, not_, nil, to_dataframe
 
 SECRET_KEY = os.environ["ENVERUS_SECRET_KEY"]
 DATASET = "wells"

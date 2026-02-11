@@ -7,7 +7,7 @@ from collections.abc import Sequence
 from math import floor
 from typing import Any
 
-from enverus_developer_api.requests.filters import in_ as in_filter
+from async_enverus_sdk.requests.filters import in_ as in_filter
 
 MAX_QUERY_STRING_LENGTH = 1950
 

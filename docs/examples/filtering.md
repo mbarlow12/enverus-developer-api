@@ -22,7 +22,7 @@ a set of composable functions that produce those strings for you.
 All functions are importable from the top-level package:
 
 ```python
-from enverus_developer_api import eq, ne, gt, ge, lt, le, in_, btw, nil, not_
+from async_enverus_sdk import eq, ne, gt, ge, lt, le, in_, btw, nil, not_
 ```
 
 ## Composition
@@ -39,7 +39,7 @@ not_(nil())              # "not(nil)"
 Pass filter expressions as keyword arguments to `query()` or `count()`:
 
 ```python
-from enverus_developer_api import sync, in_, nil
+from async_enverus_sdk import sync, in_, nil
 
 SECRET_KEY = "..."
 
@@ -77,5 +77,5 @@ for record in sync.query(
 
 ## Full example
 
-See [`examples/filtering.py`](https://github.com/enverus-ea/enverus-developer-api/blob/master/examples/filtering.py)
+See [`examples/filtering.py`](https://github.com/enverus-ea/async-enverus-sdk/blob/master/examples/filtering.py)
 for a runnable script demonstrating all filter functions.

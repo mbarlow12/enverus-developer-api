@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 import respx
 
-from enverus_developer_api._sync import count, ddl, docs, query
+from async_enverus_sdk._sync import count, ddl, docs, query
 
 V3_BASE = "https://api.enverus.com/v3/direct-access/"
 

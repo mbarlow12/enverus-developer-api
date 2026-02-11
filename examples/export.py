@@ -10,7 +10,7 @@ import csv
 import os
 import tempfile
 
-from enverus_developer_api import sync, to_csv, to_dataframe
+from async_enverus_sdk import sync, to_csv, to_dataframe
 
 SECRET_KEY = os.environ["ENVERUS_SECRET_KEY"]
 DATASET = "wells"
